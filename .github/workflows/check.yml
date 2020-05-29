@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Dump URL
-        run: echo ${{ github.event.release.upload_url }}
+        run: echo "${{ github.event.release.upload_url }}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
