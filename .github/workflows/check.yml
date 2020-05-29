@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: Check Env
-        run: dir env:
+        run: set
