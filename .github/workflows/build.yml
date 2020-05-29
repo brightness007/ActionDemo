@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Download Setup Tool
+        uses: Legion2/download-release-action@v2.1.0
+        with:
+          repository: Personal-Cloud/PersonalCloudSetup
+          tag: v1.3
+          file: PersonalCloudSetup.zip
+
+      - name: Extract Setup Tool
+        run: Expand-Archive -Path .\PersonalCloudSetup.zip -DestinationPath .\PersonalCloudSetup
+      
+      - name: Run Setup Tool
+        run: .\PersonalCloudSetup\PersonalCloudSetup.exe -d .\PersonalCloudSetup\Data -b 0.11
+        
