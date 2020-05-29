@@ -1,0 +1,11 @@
+on:
+  release:
+    types: [created]
+    
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check Env
+        run: dir env:
