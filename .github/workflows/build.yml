@@ -22,7 +22,7 @@ jobs:
         id: get-version-string
         with:
           pattern: 'v(.*)'
-          string: "${{ event.release.tag_name }}"
+          string: "${{ github.event.release.tag_name }}"
           replace-with: '$1'
           flags: 'g'
 
