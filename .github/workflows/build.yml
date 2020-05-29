@@ -17,11 +17,14 @@ jobs:
       - name: Extract Setup Tool
         run: Expand-Archive -Path .\PersonalCloudSetup.zip -DestinationPath .\PersonalCloudSetup
 
+      - name: Echo Tag Name
+        run: echo "${{ github.event.release.tag_name }}"
+        
       - name: Get Version String
         uses: frabert/replace-string-action@master
         id: get-version-string
         with:
-          pattern: 'v(.*)'
+          pattern: '^v(.*)$'
           string: "${{ github.event.release.tag_name }}"
           replace-with: '$1'
           flags: 'g'
